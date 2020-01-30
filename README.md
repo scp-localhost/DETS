@@ -3,7 +3,7 @@ Deep East Texas Security - 'Punzel out Cat (PoC), Bluetooth sniffing and spoofin
 Bluetooth Sniffing and Spoofing
 with ‘Punzel our Cat (PoC) 
 
-Twitter: #PunzelOurCat(PoC)
+Twitter: #PunzelOurCat
 
 Intended Audience – anyone with interest in Bluetooth, Wifi, R Pi, Cats.
 
