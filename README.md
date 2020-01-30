@@ -6,7 +6,7 @@ Intended Audience – anyone with interest in Bluetooth, Wifi, R Pi, Cats.
 
 Many examples are Linux based. ~Most apply equally well to Windows.
 
-A familiarity with Wireshark and Metasploit is a head start but this is a good chance to try them out for the first time as well (both can be used for ~hands on~ if installed)
+A familiarity with Wireshark and Metasploit is a head start but this is a good chance to try them out for the first time as well (both can be used for ~hands on if installed)
 
 No bluetooth device needed, but if you have an ~ubertooth...bring it.
 
