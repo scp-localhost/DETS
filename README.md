@@ -1,7 +1,10 @@
  DETS
 Deep East Texas Security - 'Punzel out Cat (PoC), Bluetooth sniffing and spoofing 
 Bluetooth Sniffing and Spoofing
-with ‘Punzel our Cat (PoC)
+with ‘Punzel our Cat (PoC) 
+
+Twitter: #PunzelOurCat(PoC)
+
 Intended Audience – anyone with interest in Bluetooth, Wifi, R Pi, Cats.
 
 Many examples are Linux based. ~Most apply equally well to Windows.
