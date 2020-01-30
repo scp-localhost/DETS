@@ -1,0 +1,39 @@
+###[ HCI header ]### 
+  type      = Event
+###[ HCI Event header ]### 
+     code      = 0x3e
+     len       = 39
+###[ LE Meta ]### 
+        event     = advertising_report
+###[ Advertising Reports ]### 
+           len       = 1
+           \reports   \
+            |###[ Advertising Report ]### 
+            |  type      = conn_und
+            |  atype     = random
+            |  addr      = ed:2d:a1:08:31:f4
+            |  len       = 27
+            |  \data      \
+            |   |###[ EIR Header ]### 
+            |   |  len       = 2
+            |   |  type      = flags
+            |   |###[ Flags ]### 
+            |   |     flags     = general_disc_mode+br_edr_not_supported
+            |   |###[ EIR Header ]### 
+            |   |  len       = 3
+            |   |  type      = complete_list_16_bit_svc_uuids
+            |   |###[ Complete list of 16-bit service UUIDs ]### 
+            |   |     svc_uuids = [0xfeed]
+            |   |###[ EIR Header ]### 
+            |   |  len       = 13
+            |   |  type      = svc_data_16_bit_uuid
+            |   |###[ EIR Service Data - 16-bit UUID ]### 
+            |   |     svc_uuid  = 0xfeed
+            |   |###[ Raw ]### 
+            |   |        load      = '\x02\x00\x18ts8-\xed\x93\x9d'
+            |   |###[ EIR Header ]### 
+            |   |  len       = 5
+            |   |  type      = complete_local_name
+            |   |###[ Complete Local Name ]### 
+            |   |     local_name= 'Tile'
+            |  rssi      = -95
