@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">	
+<div class="col-md-12">
+{% if rev: %}
+	<h3>empty var</h3>
+{% else %}
+{% if frm: %}
+	{% if head: %}{{ else}}
+	<h3>{{ frm }}{{ rec }}</h3>
+	{% endif %}
+	{% if foo: %}<form action="{{ url_for('submit') }}" method="post">
+	{% if div: %}{% for row in div %}
+		<textarea name="text{{ row[0] }}">{{ row[1] }}</textarea>
+		{% endfor %}{% endif %}<input type="submit"></form>
+		{% else %}{% if div: %}{% for row in div %}
+		<p>{{ row[0] }}:{{ row[1] }}
+		{% endfor %}{% endif %}{% endif %}
+
+		{% else %}
+		{% if div: %}
+		{% if head: %}
+		<h3>{{ head }}</h3>
+		{% endif %}
+		{{ div }}
+		{% endif %}
+		{% endif %}
+{% endif %}
+</div>
+</div>
+{% endblock %}

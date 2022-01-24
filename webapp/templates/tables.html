@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row"><div class="col-md-12">
+{% if rev: %}<h3>empty var</h3>{% else %}
+<script type=text/javascript>
+$(function() {
+	$('a#refresh').bind('click', function() {
+		$('a#refresh').text('Auto...F5 to stop')
+		{% if bfq: %}
+		setTimeout(function(){$('a#refresh').click()}, 5000);
+		$.ajax({url: $SCRIPT_ROOT + '/qry/bfq/tbl', success:function(data){
+			$("#bfq").html(data);
+		}});
+		{% endif %}
+		{% if ofq: %}$.ajax({url: $SCRIPT_ROOT + '/qry/bfq/tbl', success:function(data){
+			$("#ofq").html(data);
+		}});
+		{% endif %}
+		$.ajax({url: $SCRIPT_ROOT + '/qry/{{ qry }}/tbl', success:function(data){
+			$("#result").html(data);
+		}});
+		return false;
+	});
+});
+</script>
+	{% if tblhead: %}<h3>{{ tblhead }}</h3>{% endif %}
+	{% if refresh: %}<p><a href=# id=refresh>Refresh</a>{% endif %}
+	<table><tr>
+	<td style="vertical-align:top"><div id=bfq>{% if bfq: %}{{ bfq }}{% endif %}</div></td>
+	<td style="vertical-align:top" width=50%><div id=result>{{ table }}</div></td>
+	<td style="vertical-align:top"><div id=ofq>{% if ofq: %}{{ ofq }}{% endif %}</div></td>
+	</tr></table>
+{% endif %}
+</div></div>
+{% endblock %}

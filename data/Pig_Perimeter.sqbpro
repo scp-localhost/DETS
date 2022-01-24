@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/papa/git/perimeterPig/data/Pig_Perimeter.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="693"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,10:mainhoneyCalls"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="honeyCalls" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="59"/><column index="2" value="195"/><column index="3" value="300"/><column index="4" value="300"/><column index="5" value="47"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT '&lt;==' || substr(datetime('now','localtime'),12,15) || '==&gt;' cnt,'&lt;==Date:==&gt;' stat
+union ALL
+select count(*), '&lt;==MACs====&gt;' from (
+select count(MAC) from perimeter group by MAC)
+union ALL
+select '&lt;===rssi====&gt;','&lt;==live MACs==&gt;'
+union ALL
+select * from (
+select min(rssi), MAC from perimeter where julianday(perimeter.last_seen)&gt;julianday('now','localtime', '-600 seconds') group by MAC order by min(rssi)*1 desc)
+union ALL
+select '&lt;=========&gt;','&lt;====Last====&gt;'
+union ALL
+select * from (
+select substr(max(last_seen),6, 14), MAC from perimeter group by MAC order by max(last_seen) desc)</sql><sql name="SQL 2">select julianday('now','localtime') xnow,julianday('now','localtime', '-30 seconds') xthen;</sql><sql name="SQL 3">select * from(SELECT '&lt;==' || substr(time(julianday('now','localtime') - julianday(perimeter.last_seen)) ,4,5)|| '==&gt;' last_seen,&quot;last hour...&quot; MAC, &quot;&quot; rssi,&quot;&quot; relate  from perimeter order by perimeter.last_seen desc limit 1) 
+union all select * from perimeter  where julianday(perimeter.last_seen)&gt;julianday('now','localtime', '-1 hours') order by perimeter.last_seen desc</sql><current_tab id="2"/></tab_sql></sqlb_project>

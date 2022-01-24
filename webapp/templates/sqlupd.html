@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">	
+<div class="col-md-12">
+{% if rev: %}
+	<h3>empty var</h3>
+{% else %}
+<script type=text/javascript>
+$(function() {
+	$('a#calculate').bind('click', function() {
+		$.ajax($SCRIPT_ROOT + '/_sql', {
+			qry: $('input[name="qry"]').val(),
+				  record: $('input[name="record"]').val(),
+				  {% if div: %}{% for row in div %}
+				  "text{{ row[0] }}":$('input[name="{{ row[0] }}"]').val()
+				  {% endfor %}{% endif %}
+		}, function(data) {
+			$("#result").text(data.result);
+		});
+		return false;
+	});
+});
+
+</script>
+<h1>jQuery Example</h1>
+<p><input type=text size=5 name=qry> +
+<input type=text size=5 name=record> =
+<span id=result>?</span>
+<p><a href=# id=calculate>calculate server side</a>
+{% endif %}
+
+{% if frm: %}
+{% if head: %}{{ else}}
+<h3>{{ frm }}{{ rec }}</h3>
+{% endif %}
+<form action="{{ url_for('submit') }}" method="post">
+{% if div: %}{% for row in div %}
+<textarea name="text{{ row[0] }}">{{ row[1] }}</textarea>
+{% endfor %}{% endif %}
+<input type="submit">
+</form>
+{% else %}
+{% if div: %}
+{% if head: %}
+<h3>{{ head }}</h3>
+{% endif %}
+{{ div }}
+{% endif %}
+{% endif %}
+</div>
+</div>
+{% endblock %}
